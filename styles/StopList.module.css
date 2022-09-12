@@ -1,0 +1,32 @@
+.noStopList {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background: #c0c6c8;
+}
+
+.stopList {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background: #c0c6c8;
+}
+
+.container input[type="search"] {
+  margin-bottom: 1rem;
+  padding: 1rem 0;
+  width: 50%;
+  text-align: center;
+  border-radius: 8px;
+  border: solid 1px #c0c6c8;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.title {
+  color: red;
+  font-size: 3rem;
+  text-align: center;
+  background: #c0c6c8;
+}
