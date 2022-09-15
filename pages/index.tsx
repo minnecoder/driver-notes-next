@@ -1,12 +1,18 @@
 import type { NextPage } from "next";
 import Link from "next/link";
-import Head from "next/head";
-import Image from "next/image";
+import { useRouter } from "next/router";
 import React, { useState } from "react";
 import styles from "../styles/Home.module.css";
 
+export interface User {
+  userName: string;
+  password: string;
+  error: string;
+}
+
 const Home: NextPage = () => {
-  const [user, setUser] = useState({
+  const router = useRouter();
+  const [user, setUser] = useState<User>({
     userName: "",
     password: "",
     error: "",
@@ -20,7 +26,29 @@ const Home: NextPage = () => {
     }));
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {};
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    fetch("/api/User/login", {
+      method: "POST",
+      mode: "cors",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        userName: user.userName,
+        password: user.password,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (Object.prototype.hasOwnProperty.call(data, "error")) {
+          setUser((prevUser) => ({ ...prevUser, error: data.error }));
+          router.push("/");
+        }
+        if (Object.prototype.hasOwnProperty.call(data, "token")) {
+          localStorage.setItem("token", data.token);
+          router.push("/stoplist");
+        }
+      });
+  };
 
   return (
     <div className={styles.container}>
