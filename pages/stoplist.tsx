@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { Stop } from "../types/index.d";
 import { useState } from "react";
 import NavBar from "../components/NavBar";
-import SingleStop from "../components/singlestop";
+import SingleStop from "../components/SingleStop";
 import styles from "../styles/StopList.module.css";
 
 const StopList: NextPage = () => {
@@ -26,7 +26,7 @@ const StopList: NextPage = () => {
         router.push("/");
       });
   }, [dataLoaded]);
-  console.log(stops);
+
   const filteredStops = stops.filter(
     (stop) => stop.custName.toLowerCase().indexOf(search.toLowerCase()) !== -1
   );
@@ -55,6 +55,7 @@ const StopList: NextPage = () => {
 
   return (
     <div className={styles.container}>
+      <NavBar />
       <h1 className={styles.title}>Stops</h1>
       <div className={styles.stopList}>
         <input
