@@ -1,0 +1,27 @@
+.registerTitle {
+  text-align: center;
+  color: red;
+  margin-top: 4rem;
+}
+
+.error {
+  text-align: center;
+}
+
+.registerForm {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.registerForm input {
+  width: 20rem;
+  margin: 0.5rem 0;
+  padding: 1rem 0;
+  text-align: center;
+}
+
+.registerForm input[type="submit"] {
+  width: 5rem;
+}
