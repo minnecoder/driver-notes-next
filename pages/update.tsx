@@ -2,11 +2,13 @@ import { NextPage } from "next";
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { Stop } from "../types";
-import styled from "styled-components";
+import styles from "../styles/Update.module.css";
 import NavBar from "../components/NavBar";
 
 const Update: NextPage = (stop) => {
   const router = useRouter();
+  let data = {};
+  // JSON.parse(router.query.stop as string) || localStorage.getItem("stopData");
   const [dataLoaded, setDataLoaded] = useState(false);
   const [stopData, setStopData] = useState<Stop>({
     _id: "",
@@ -19,40 +21,25 @@ const Update: NextPage = (stop) => {
     signers: [""],
   });
 
-  //   useEffect(() => {
-  //     if (stop.location.state !== undefined) {
-  //       const data = stop.location.state.stop.stop;
-  //       localStorage.setItem("data", JSON.stringify(data));
-  //       console.log(data);
-  //       setStopData({
-  //         _id: data._id,
-  //         custName: data.custName,
-  //         address: data.address,
-  //         suite: data.suite,
-  //         city: data.city,
-  //         deliveryLocation: data.deliveryLocation,
-  //         notes: data.notes,
-  //         signers: data.signers,
-  //       });
-  //       setDataLoaded(true);
-  //     }
-  //     if (stop.location.state === undefined) {
-  //       const data = localStorage.getItem("data");
-  //       const dataObject = JSON.parse(data);
-  //       console.log(dataObject);
-  //       setStopData({
-  //         _id: dataObject._id,
-  //         custName: dataObject.custName,
-  //         address: dataObject.address,
-  //         suite: dataObject.suite,
-  //         city: dataObject.city,
-  //         deliveryLocation: dataObject.deliveryLocation,
-  //         notes: dataObject.notes,
-  //         signers: dataObject.signers,
-  //       });
-  //       setDataLoaded(true);
-  //     }
-  //   }, [dataLoaded]);
+  //TODO: fix ts-ignore
+
+  // if data is empty, get data from local storage
+  useEffect(() => {
+    if (router.query.stop !== undefined) {
+      data = JSON.parse(router.query.stop as string);
+      localStorage.setItem("data", JSON.stringify(data));
+      // @ts-ignore
+      setStopData(data.stop);
+      setDataLoaded(true);
+    }
+    // if data is not empty, set data to stopData
+    if (router.query.stop === undefined) {
+      data = JSON.parse(localStorage.getItem("data") as string);
+      // @ts-ignore
+      setStopData(data.stop);
+      setDataLoaded(true);
+    }
+  }, []);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.persist();
@@ -85,11 +72,11 @@ const Update: NextPage = (stop) => {
   };
 
   return (
-    <Main>
+    <div className={styles.main}>
       <NavBar />
-      <UpdateTitle>Update Stop</UpdateTitle>
+      <h3 className={styles.updateTitle}>Update Stop</h3>
       {/* <p>{stopData.error}</p> */}
-      <UpdateForm>
+      <form className={styles.updateForm}>
         <input
           name="custName"
           type="text"
@@ -140,45 +127,9 @@ const Update: NextPage = (stop) => {
           onChange={handleChange}
         />
         <input type="submit" value="Update Note" onClick={handleSubmit} />
-      </UpdateForm>
-    </Main>
+      </form>
+    </div>
   );
 };
 
 export default Update;
-
-const Main = styled.div`
-  background: #c0c6c8;
-`;
-
-const UpdateTitle = styled.h1`
-  font-size: 3rem;
-  color: red;
-  text-align: center;
-`;
-
-const UpdateForm = styled.form`
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-
-  input[type="text"] {
-    margin: 0.5rem 0;
-    padding: 1rem 0;
-    width: 50%;
-    border-radius: 8px;
-    border: solid 1px #c0c6c8;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
-  }
-
-  input[type="submit"] {
-    background: #767676;
-    width: 6rem;
-    padding: 1rem;
-    margin-top: 0.5rem;
-    border: solid 1px #767676;
-    border-radius: 8px;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
-  }
-`;

@@ -1,0 +1,35 @@
+.main {
+  background: #c0c6c8;
+}
+
+.updateTitle {
+  font-size: 3rem;
+  color: red;
+  text-align: center;
+}
+
+.updateForm {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.updateForm input[type="text"] {
+  margin: 0.5rem 0;
+  padding: 1rem 0;
+  width: 50%;
+  border-radius: 8px;
+  border: solid 1px #c0c6c8;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.updateForm input[type="submit"] {
+  background: #767676;
+  width: 6rem;
+  padding: 1rem;
+  margin-top: 0.5rem;
+  border: solid 1px #767676;
+  border-radius: 8px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+}
