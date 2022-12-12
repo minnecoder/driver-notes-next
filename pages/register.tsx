@@ -19,6 +19,8 @@ const Register: NextPage = () => {
     event.preventDefault();
   }
 
+  // TODO: Fix handleSubmit
+
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     fetch("/api/v1/user/add", {
