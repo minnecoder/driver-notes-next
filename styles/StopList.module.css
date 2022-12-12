@@ -16,12 +16,13 @@
 
 .container input[type="search"] {
   margin-bottom: 1rem;
-  padding: 1rem 0;
+  padding: 1.5rem 0.5rem;
   width: 50%;
   text-align: center;
   border-radius: 8px;
   border: solid 1px #c0c6c8;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+  font-family: unset;
 }
 
 .title {
