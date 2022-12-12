@@ -8,7 +8,7 @@ import NavBar from "../components/NavBar";
 const Update: NextPage = (stop) => {
   const router = useRouter();
   let data = {};
-  // JSON.parse(router.query.stop as string) || localStorage.getItem("stopData");
+
   const [dataLoaded, setDataLoaded] = useState(false);
   const [stopData, setStopData] = useState<Stop>({
     _id: "",
@@ -50,7 +50,7 @@ const Update: NextPage = (stop) => {
     event.preventDefault();
   };
 
-  const handleSubmit = (event: any) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const token = localStorage.getItem("token");
     fetch(`/api/v1/notes/${stopData._id}`, {
@@ -76,7 +76,7 @@ const Update: NextPage = (stop) => {
       <NavBar />
       <h3 className={styles.updateTitle}>Update Stop</h3>
       {/* <p>{stopData.error}</p> */}
-      <form className={styles.updateForm}>
+      <form className={styles.updateForm} onSubmit={handleSubmit}>
         <input
           name="custName"
           type="text"
@@ -126,7 +126,7 @@ const Update: NextPage = (stop) => {
           value={stopData.signers}
           onChange={handleChange}
         />
-        <input type="submit" value="Update Note" onClick={handleSubmit} />
+        <input type="submit" value="Update Note" />
       </form>
     </div>
   );
