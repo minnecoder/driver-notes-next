@@ -1,0 +1,36 @@
+.main {
+  background: #c0c6c8;
+}
+
+.addTitle {
+  font-size: 3rem;
+  color: red;
+  text-align: center;
+}
+
+.addForm {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.addForm input[type="text"] {
+  margin: 0.5rem 0;
+  padding: 1.5rem 0.5rem;
+  width: 50%;
+  border-radius: 8px;
+  border: solid 1px #c0c6c8;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+  font-family: unset;
+}
+
+.addForm input[type="submit"] {
+  background: #767676;
+  width: 5rem;
+  padding: 1rem 0;
+  margin-top: 0.5rem;
+  border: solid 1px #767676;
+  border-radius: 8px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+}
