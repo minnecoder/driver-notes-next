@@ -2,6 +2,7 @@ import type { NextPage } from "next";
 import React, { useState } from "react";
 import { useRouter } from "next/router";
 import styles from "../styles/Register.module.css";
+import Link from "next/link";
 
 const Register: NextPage = () => {
   const router = useRouter();
@@ -48,8 +49,9 @@ const Register: NextPage = () => {
   }
 
   return (
-    <div>
+    <div className={styles.container}>
       <h1 className={styles.registerTitle}>Delivery Notes</h1>
+      <h3>Register</h3>
       <p className={styles.error}>{user.error}</p>
       <form className={styles.registerForm} onSubmit={handleSubmit}>
         <input
@@ -71,6 +73,14 @@ const Register: NextPage = () => {
         />
 
         <input type="submit" value="Submit" />
+        <div className={styles.links}>
+          <p>
+            Already have an account?{" "}
+            <Link href="/">
+              <a>Login</a>
+            </Link>
+          </p>
+        </div>
       </form>
     </div>
   );
