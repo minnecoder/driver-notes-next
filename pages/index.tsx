@@ -53,6 +53,7 @@ const Home: NextPage = () => {
   return (
     <div className={styles.container}>
       <h1 className={styles.LoginTitle}>Delivery Notes</h1>
+      <h3>Login</h3>
       <p className={styles.error}>{user.error}</p>
       <form className={styles.form} onSubmit={handleSubmit}>
         <input
@@ -71,10 +72,12 @@ const Home: NextPage = () => {
           onChange={handleChange}
         />
         <input type="submit" value="Submit" />
-        <div>
+        <div className={styles.links}>
           <p>
-            Don&apos;t have an account?
-            <Link href="/register"> Register User</Link>
+            Don&apos;t have an account?{" "}
+            <Link href="/register">
+              <a>Register User</a>
+            </Link>
           </p>
           <p>
             Login as a Demo User <Link href="/demo"> Click Here</Link>
