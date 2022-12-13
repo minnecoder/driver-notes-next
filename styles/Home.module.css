@@ -15,28 +15,45 @@
   margin-top: 4rem;
 }
 
+.container h3 {
+  text-align: center;
+}
+
 .error {
   text-align: center;
   color: red;
   font-weight: bold;
 }
 
-.form input {
-  width: 20rem;
+.form input[type="text"],
+.form input[type="password"] {
+  width: 40rem;
   margin: 0.5rem 0;
-  padding: 1rem 0;
+  padding: 1.5rem 0.5rem;
   text-align: center;
-  border-radius: 5px;
+  border-radius: 8px;
   border: solid 1px #c0c6c8;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+  font-family: unset;
 }
 
 .form input[type="submit"] {
-  width: 5rem;
-  background: #767676;
+  display: inline-block;
+  text-decoration: none;
+  font-weight: bold;
   color: white;
-  border: solid 1px #767676;
-  cursor: pointer;
+  overflow: hidden;
+  background-color: #767676;
+  margin: 1rem 0;
+  padding: 1rem 2rem;
+  border: 1px solid #767676;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+}
+
+.links a {
+  text-decoration: none;
+  color: blue;
 }
 
 @media (max-width: 600px) {
